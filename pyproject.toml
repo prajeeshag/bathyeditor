@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools >= 61.0", "wheel", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bathyeditor"
+dynamic = ["version"]
+description = "Interactive bathymetry editor for Ocean Models"
+authors = [{ name = "Prajeesh Ag", email = "prajeeshag@gmail.com" }]
+license = { file = "LICENSE" }
+readme = "README.md"
+dependencies = ["typer", "netcdf4", "xarray", "numpy", "matplotlib", "PyQt5"]
+
+[project.urls]
+homepage = "https://prajeeshag.com/beditor"
+repository = "https://github.com/prajeeshag/beditor"
+documentation = "https://prajeeshag.com/beditor"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = ["tests", "docs"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "node-and-timestamp"
+
+[tool.setuptools.package-data]
+"sphinx_termynal" = ["static/*"]
+
+[tool.commitizen]
+name = "cz_gitmoji"
+
+[project.scripts]
+bathyeditor = "bathyeditor.main:app"
